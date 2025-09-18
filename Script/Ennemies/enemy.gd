@@ -1,8 +1,10 @@
 extends Area2D
+class_name Enemy
 
 @export var health: int = 3
 @export var move_speed: float = 100.0
-@export var movement_pattern: String = "straight"  
+@export var movement_pattern: String = "straight"
+@export var xp_reward: int = 40  
 
 var initial_position: Vector2
 var time_alive: float = 0.0
@@ -55,7 +57,12 @@ func take_damage(amount: int):
 func die():
 	enemy_destroyed.emit(self)
 
-	# Effet de destruction 
+	# Donner de l'XP au joueur
+	var players = get_tree().get_nodes_in_group("player")
+	if players.size() > 0 and players[0].has_method("gain_xp"):
+		players[0].gain_xp(xp_reward)
+
+	# Effet de destruction
 	var tween = create_tween()
 	tween.parallel().tween_property(self, "scale", Vector2.ZERO, 0.2)
 	tween.parallel().tween_property(self, "modulate:a", 0.0, 0.2)

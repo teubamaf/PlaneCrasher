@@ -52,3 +52,6 @@ func _on_body_entered(body):
 	if body.has_method("take_damage") and body != get_parent():
 		body.take_damage(damage)
 	queue_free()
+
+func set_damage(new_damage: int):
+	damage = new_damage

@@ -10,10 +10,17 @@ config_version=5
 
 [application]
 
-config/name="Nouveau projet de jeu"
-run/main_scene="uid://b2il63hqe31yc"
+config/name="PlaneCrasher"
+run/main_scene="uid://c4n5b6m7o8qaq"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=900
+window/size/viewport_height=1600
+window/stretch/mode="viewport"
+window/handheld/orientation=1
 
 [file_customization]
 
@@ -22,6 +29,11 @@ folder_colors={
 "res://Scenes/": "orange",
 "res://Script/": "yellow"
 }
+
+[global_group]
+
+player=""
+powerup_ui=""
 
 [input]
 
@@ -54,4 +66,6 @@ move_down={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true

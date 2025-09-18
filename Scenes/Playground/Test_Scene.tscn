@@ -1,12 +1,35 @@
-[gd_scene load_steps=4 format=3 uid="uid://b2il63hqe31yc"]
+[gd_scene load_steps=8 format=3 uid="uid://c4n5b6m7o8qaq"]
 
-[ext_resource type="Script" uid="uid://dmihb1j5igvhf" path="res://Script/Playground/test_scene.gd" id="1_2uc3r"]
+[ext_resource type="Script" uid="uid://dmihb1j5igvhf" path="res://Script/Playground/Test_scene.gd" id="1_2uc3r"]
 [ext_resource type="PackedScene" uid="uid://gbqjqj5xaaeq" path="res://Scenes/Player/Player.tscn" id="1_nl754"]
 [ext_resource type="PackedScene" uid="uid://dxpeh1t3587yt" path="res://Scenes/Ennemies/Enemy.tscn" id="2_8ibn2"]
+[ext_resource type="Script" uid="uid://c6ndhhui1st7f" path="res://Script/Systems/GameManager.gd" id="4_o2ev7"]
+[ext_resource type="PackedScene" uid="uid://bxq3mp0x7bvs1" path="res://Scenes/UI/PowerupSelectionUI.tscn" id="5_wsujw"]
+[ext_resource type="Script" uid="uid://de56dwnqbp0ow" path="res://Script/Debug/TestLevelUp.gd" id="6_gjcgs"]
+[ext_resource type="Script" uid="uid://7vakhdaav0dk" path="res://Script/Debug/ScreenDebugger.gd" id="7_abc123"]
 
 [node name="TestScene" type="Node2D"]
 script = ExtResource("1_2uc3r")
 enemy_scene = ExtResource("2_8ibn2")
 
 [node name="Player" parent="." instance=ExtResource("1_nl754")]
-position = Vector2(512, 330)
+position = Vector2(450, 800)
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("4_o2ev7")
+
+[node name="TestLevelUp" type="Node" parent="."]
+script = ExtResource("6_gjcgs")
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+
+[node name="PowerupSelectionUI" parent="UILayer" instance=ExtResource("5_wsujw")]
+
+[node name="DebugUI" type="Control" parent="UILayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_abc123")
